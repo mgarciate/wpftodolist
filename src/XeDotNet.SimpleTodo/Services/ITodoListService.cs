@@ -8,6 +8,7 @@ namespace XeDotNet.SimpleTodo.Services
     {
         IList<Todo> GetItems();
         int Save(Todo todo);
+        void Delete(Todo item);
     }
 
     class TodoListFakeService : ITodoListService
@@ -32,6 +33,11 @@ namespace XeDotNet.SimpleTodo.Services
         public int Save(Todo todo)
         {
             return 42;
+        }
+
+        public void Delete(Todo item)
+        {
+            
         }
     }
 }

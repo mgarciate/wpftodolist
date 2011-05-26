@@ -41,14 +41,23 @@ namespace XeDotNet.SimpleTodo.ViewModels
             }
         }
 
+        public DelegateCommand<Todo> DeleteItemCommand { get; private set; }
+
         public TodoListViewModel(ITodoListView view, ITodoListService service)
         {
             _view = view;
             _service = service;
             Items = new ObservableCollection<Todo>();
             AddNewItemCommand = new DelegateCommand(ExecuteAddNewItemCommand, CanExecuteAddNewItemCommand);
+            DeleteItemCommand = new DelegateCommand<Todo>(ExecuteDeleteCommand);
             
             _view.DataContext = this;
+        }
+
+        private void ExecuteDeleteCommand(Todo item)
+        {
+            _service.Delete(item);
+            Items.Remove(item);
         }
 
         private bool CanExecuteAddNewItemCommand()
