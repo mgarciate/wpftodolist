@@ -78,7 +78,7 @@
     		<RowDefinition Height="*"/>
     		<RowDefinition Height="100"/>
     	</Grid.RowDefinitions>
-    	<Border Margin="10,25" CornerRadius="3" Background="#66FFFFFF">
+    	<Border Margin="10,25,10,15" CornerRadius="3" Background="#66FFFFFF">
     		<Grid>
     			<Grid.RowDefinitions>
     				<RowDefinition Height="0.34*"/>
