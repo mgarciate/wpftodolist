@@ -144,9 +144,27 @@ namespace XeDotNet.SimpleTodo.Fixtures.ViewModels
         }
 
         [Fact]
+        public void DeleteItem_ShouldCallServiceToRemoveTheItem()
+        {
+            Todo item = new Todo();
+            _viewModel.Initialize();
+           
+            _viewModel.DeleteItemCommand.Execute(item);
+
+            _service.Verify(s => s.Delete(item));
+        }
+
+        [Fact]
         public void DeleteItem_ShouldRemoveItemFromCollection()
         {
+            Todo toDelete = new Todo();
+            IList<Todo> items = new List<Todo>{new Todo(), toDelete, new Todo()};
+            _service.Setup(s => s.GetItems()).Returns(items);
+            _viewModel.Initialize();
 
+            _viewModel.DeleteItemCommand.Execute(toDelete);
+
+            Assert.Equal(2, _viewModel.Items.Count);
         }
     }
 }
