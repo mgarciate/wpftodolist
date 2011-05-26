@@ -78,16 +78,7 @@
     		<RowDefinition Height="*"/>
     		<RowDefinition Height="100"/>
     	</Grid.RowDefinitions>
-    	<Border Margin="10,25" CornerRadius="3">
-    		<Border.Background>
-    			<LinearGradientBrush EndPoint="1.071,0.42" StartPoint="-0.115,0.44">
-    				<GradientStop Color="#FFC4DFF9" Offset="0"/>
-    				<GradientStop Color="White" Offset="1"/>
-    			</LinearGradientBrush>
-    		</Border.Background>
-    		<Border.Effect>
-    			<DropShadowEffect ShadowDepth="3"/>
-    		</Border.Effect>
+    	<Border Margin="10,25" CornerRadius="3" Background="#66FFFFFF">
     		<Grid>
     			<Grid.RowDefinitions>
     				<RowDefinition Height="0.34*"/>
