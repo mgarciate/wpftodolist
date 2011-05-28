@@ -111,6 +111,7 @@
     <DesignData Include="SampleData\TodoListViewModelSampleData.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Views\completed.png" />
     <Resource Include="Views\trash.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
