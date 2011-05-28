@@ -57,6 +57,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\CompletedToColorConverter.cs" />
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Services\ITodoListService.cs" />

@@ -42,6 +42,7 @@ namespace XeDotNet.SimpleTodo.ViewModels
         }
 
         public DelegateCommand<Todo> DeleteItemCommand { get; private set; }
+        public DelegateCommand<Todo> CompletedCommand { get; private set; }
 
         public TodoListViewModel(ITodoListView view, ITodoListService service)
         {
@@ -50,8 +51,14 @@ namespace XeDotNet.SimpleTodo.ViewModels
             Items = new ObservableCollection<Todo>();
             AddNewItemCommand = new DelegateCommand(ExecuteAddNewItemCommand, CanExecuteAddNewItemCommand);
             DeleteItemCommand = new DelegateCommand<Todo>(ExecuteDeleteCommand);
+            CompletedCommand = new DelegateCommand<Todo>(ExecuteCompletedCommand);
             
             _view.DataContext = this;
+        }
+
+        private void ExecuteCompletedCommand(Todo obj)
+        {
+            obj.IsCompleted = true;
         }
 
         private void ExecuteDeleteCommand(Todo item)

@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="XeDotNet.SimpleTodo.Views.TodoListView" 
+             xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" xmlns:Converters="clr-namespace:XeDotNet.SimpleTodo.Converters" x:Class="XeDotNet.SimpleTodo.Views.TodoListView" 
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="500">
 	<UserControl.Resources>
+		<Converters:CompletedToColorConverter x:Key="IsCompletedToColorConverter" />
 		<DataTemplate x:Key="TodoTemplate">
 			<Grid Height="40" Width="450" Background="{x:Null}">
 				<Border VerticalAlignment="Center" d:LayoutOverrides="Width" Background="White" BorderBrush="White" BorderThickness="1" CornerRadius="3" Margin="3" Padding="5">
@@ -18,10 +19,12 @@
 							<ColumnDefinition Width="0.734*"/>
 							<ColumnDefinition Width="0.266*"/>
 							<ColumnDefinition Width="30"/>
+							<ColumnDefinition Width="30"/>
 						</Grid.ColumnDefinitions>
-						<TextBlock Text="{Binding Description}" Margin="0,0,19.306,0" VerticalAlignment="Stretch" d:LayoutOverrides="Width" FontWeight="Bold" FontSize="14.667"/>
+						<TextBlock Text="{Binding Description}" Margin="0,0,19.306,0" VerticalAlignment="Stretch" d:LayoutOverrides="Width" FontWeight="Bold" FontSize="14.667" Foreground="{Binding IsCompleted, Converter={StaticResource IsCompletedToColorConverter}}" />
 						<TextBlock Text="{Binding DueDate, StringFormat={}{0:dd/MM/yyyy}}" VerticalAlignment="Stretch" Foreground="#FF9F9F9F" HorizontalAlignment="Right" Grid.Column="1"/>
 						<Button Content="x" HorizontalAlignment="Stretch" Width="Auto" d:LayoutOverrides="Height" Grid.Column="2" Margin="3" Style="{DynamicResource DeleteButtonStyle}" Command="{Binding DataContext.DeleteItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding }" d:DataContext="{d:DesignData /SampleData/TodoListViewModelSampleData.xaml}"/>
+                        <Button Content="x" HorizontalAlignment="Stretch" Width="Auto" Grid.Column="3" Margin="3" Style="{DynamicResource DeleteButtonStyle}" Command="{Binding DataContext.CompletedCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding }" d:DataContext="{d:DesignData /SampleData/TodoListViewModelSampleData.xaml}" d:LayoutOverrides="Height"/>
 					</Grid>
 				</Border>
 			</Grid>
@@ -75,8 +78,8 @@
     <Grid d:DataContext="{d:DesignData /SampleData/TodoListViewModelSampleData.xaml}">
     	<Grid.RowDefinitions>
     		<RowDefinition Height="100"/>
-    		<RowDefinition Height="*"/>
-    		<RowDefinition Height="100"/>
+    		<RowDefinition/>
+    		<RowDefinition Height="30"/>
     	</Grid.RowDefinitions>
     	<Border Margin="10,25,10,15" CornerRadius="3" Background="#66FFFFFF">
     		<Grid>
