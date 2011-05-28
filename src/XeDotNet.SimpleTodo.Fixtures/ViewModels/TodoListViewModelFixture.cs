@@ -166,5 +166,20 @@ namespace XeDotNet.SimpleTodo.Fixtures.ViewModels
 
             Assert.Equal(2, _viewModel.Items.Count);
         }
+
+        [Fact]
+        public void Completed_ShouldChangeStateOfTheItem()
+        {
+            Todo item = new Todo();
+            IList<Todo> items = new List<Todo> { new Todo(), item, new Todo() };
+            _service.Setup(s => s.GetItems()).Returns(items);
+            _viewModel.Initialize();
+
+            _viewModel.CompletedCommand.Execute(item);
+
+            Assert.True(item.IsCompleted);
+        }
+
+       
     }
 }
