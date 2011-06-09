@@ -80,11 +80,7 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\XeDotNet.SimpleTodo\XeDotNet.SimpleTodo.csproj">
       <Project>{A93FE518-FE3A-48D2-AE98-78DCF963CC7A}</Project>
