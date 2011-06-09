@@ -1,8 +1,8 @@
 using System;
 using System.Windows;
-using XeDotNet.SimpleTodo.Services;
-using XeDotNet.SimpleTodo.ViewModels;
-using XeDotNet.SimpleTodo.Views;
+//using XeDotNet.SimpleTodo.Services;
+//using XeDotNet.SimpleTodo.ViewModels;
+//using XeDotNet.SimpleTodo.Views;
 
 namespace XeDotNet.SimpleTodo
 {
@@ -12,10 +12,10 @@ namespace XeDotNet.SimpleTodo
         public static void Main()
         {
             MainWindow main = new MainWindow();
-            TodoListView view = new TodoListView();
-            TodoListViewModel viewModel = new TodoListViewModel(view, new TodoListFakeService());
-            viewModel.Initialize();
-            main.AddChild(view);
+            //TodoListView view = new TodoListView();
+            //TodoListViewModel viewModel = new TodoListViewModel(view, new TodoListFakeService());
+            //viewModel.Initialize();
+            //main.AddChild(view);
 
             Application app = new Application();
             app.Run(main);
