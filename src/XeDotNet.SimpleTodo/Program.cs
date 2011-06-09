@@ -1,8 +1,5 @@
 using System;
 using System.Windows;
-//using XeDotNet.SimpleTodo.Services;
-//using XeDotNet.SimpleTodo.ViewModels;
-//using XeDotNet.SimpleTodo.Views;
 
 namespace XeDotNet.SimpleTodo
 {
