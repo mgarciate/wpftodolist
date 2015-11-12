@@ -1,0 +1,1 @@
+The sample project for the xedotnet meeting (10/06/2011)
